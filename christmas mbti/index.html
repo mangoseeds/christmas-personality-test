@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>크리스마스 유형 테스트</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="container" style="background-color:#407060 #00A95C #FFE800 #FF48B0 #928D88 #AC936E #009DA5 #3255A4 #3D5588 #00838A #BB8B41 #914E72 #0078BF#407060 #FF665E #925F52 #FF6C2F #67B346 #BB76CF #FFB511 #5EC8E5 #82D8D5 #FF4C65 #44D62C #FFE900 #FFFFFF">
+        
+        <article class="start" style="background-color:#22533a">
+            <!-- <img id="img_main" class="mt-5" src="img_main.jpeg"> -->
+            <button type="button" onclick="start();" style="font-size:large; font-weight: bold; color:#d03030;">시작하기</button>
+        <article class="question" style="background-color:#d03030">
+            <div class="progress mt-5">
+                <div class="progress-bar bg-info" role="progressbar" syle="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <h6 style="font-weight: bold;" class="text-center mt-5" id="title">문제</h6>
+            <input id="type" type="hidden" value="EI">
+            <button id="A" type="button" style="font-size:smaller; font-weight: bold; color:#FFFFFF; background-color:#3255a4">Primary</button>
+            <button id="B" type="button" style="font-size:smaller; font-weight: bold; color:#FFFFFF; background-color:#914E72">Primary</button>
+        <article class="result" style="background-color:#22533a">
+            <img id="img" class="mt-5" src alt="animal">
+            <div class="share" data-url="https://" data-title="크리스마스 유형 테스트" style=""></div>
+            <button type="button" onclick="start();" style="font-size:large; font-weight: bold; color:#d03030;">시작하기</button>
+        
+        <input type="hidden" id="EI" value="0">
+        <input type="hidden" id="SN" value="0">
+        <input type="hidden" id="TF" value="0">
+        <input type="hidden" id="JP" value="0">
+
+        <script>
+            var c_num = 1;
+            var c = {
+                1: {"background": "", "A": "", "B": "", "text": ""},
+                2: {"background": "", "A": "", "B": "", "text": ""},
+                3: {"background": "", "A": "", "B": "", "text": ""},
+                4: {"background": "", "A": "", "B": "", "text": ""},
+                5: {"background": "", "A": "", "B": "", "text": ""},
+                6: {"background": "", "A": "", "B": "", "text": ""},
+                7: {"background": "", "A": "", "B": "", "text": ""},
+                8: {"background": "", "A": "", "B": "", "text": ""},
+                9: {"background": "", "A": "", "B": "", "text": ""},
+                10: {"background": "", "A": "", "B": "", "text": ""},
+                11: {"background": "", "A": "", "B": "", "text": ""},
+                12: {"background": "", "A": "", "B": "", "text": ""}
+            }
+            var q_num = 1;
+            var q = {
+                1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래"},
+                2: {"title": "친구가 작년에 준 크리스마스 선물! 일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "그래도 선물로 받았으니 일단은 가지고 있을래"},
+                3: {"title": "", "type": "EI", "A": "E~~", "B": "I~"},
+                4: {"title": "만약 내일 아침에 일어났을 때, 내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "내가 어떻게 할지 이런 저런 상상이 펼쳐진다"},
+                5: {"title": "~~~~", "type": "JP", "A": "J~~", "B": "P~~"},
+                6: {"title": "우리 내일 밥먹자! 라고 물어보는 친구, 하지만 내일은 날씨가 안좋다", "type": "EI", "A": "크게 상관 없지", "B": "내일 말고 다른 날 어때?"},
+                7: {"title": "~~~~", "type": "TF", "A": "내가 ~~했었다가 그렇게 됐으면 슬펐을 것 같아", "B": "슬펐겠다"},
+                8: {"title": "~~~~", "type": "SN", "A": "S~~", "B": "N~~~"},
+                9: {"title": "~~~~", "type": "JP", "A": "J~~", "B": "P~~"},
+                10: {"title": "~~~~", "type": "SN", "A": "S~~", "B": "N~~~"},
+                11: {"title": "~~~~", "type": "TF", "A": "T ~~", "B": "F~~"},
+                12: {"title": "곧 2023년이 시작되는데, 나는", "type": "JP", "A": "내년에 무엇을 하고 싶은지 상세한 계획을 세워뒀다", "B": "이루고 싶은 목표 정도는 생각해 봤다"}
+            }
+
+            var result = {
+                "ISTJ": {"img":"img_istj.jpg"},
+                "ISFJ": {"img":"img_isfj.jpg"},
+                "INTJ": {"img":"img_intj.jpg"},
+                "INFJ": {"img":"img_infj.jpg"},
+                "ISTP": {"img":"img_istp.jpg"},
+                "ISFP": {"img":"img_isfp.jpg"},
+                "INTP": {"img":"img_intp.jpg"},
+                "INFP": {"img":"img_infp.jpg"},
+
+                "ESTJ": {"img":"img_estj.jpg"},
+                "ESFJ": {"img":"img_esfj.jpg"},
+                "ENTJ": {"img":"img_entj.jpg"},
+                "ENFJ": {"img":"img_enfj.jpg"},
+                "ESTP": {"img":"img_estp.jpg"},
+                "ESFP": {"img":"img_esfp.jpg"},
+                "ENTP": {"img":"img_entp.jpg"},
+                "ENFP": {"img":"img_enfp.jpg"},
+            }
+
+            function start(){
+                $(".start").hide();
+                $(".question").show();
+                next();
+            }
+
+            $("#A").click(function(){
+                var type = $("#type").val();
+                var preValue = $("#"+type).val();
+                $("#"+type).val(parseInt(preValue)+1);
+                next();
+            });
+            $("#B").click(function(){
+                next();
+            });
+
+            function next() {
+                if (num==13) {
+                    $(".question").hide();
+                    $(".result").show();
+
+                    var mbti = "";
+
+                    ($("#EI").val()<2) ? mbti+="I" : mbti+="E";
+                    ($("#SN").val()<2) ? mbti+="N" : mbti+="S";
+                    ($("#TF").val()<2) ? mbti+="F" : mbti+="T";
+                    ($("#JP").val()<2) ? mbti+="P" : mbti+="J";
+
+                    $("#img").attr("src",result[mbti]["img"]);
+                    $("#animal").html(result[mbti]["animal"]);
+                    $("#explain").html(rsult[mbti]["explain"]);
+                } else {
+                    $(".progress-bar").attr('style','width: calc(100/12*'+num+'%)');
+                    //문제 & 선택지
+                    $("#title").html(q[num]["title"]);
+                    $("#A").html(q[num]["A"]);
+                    $("#B").html(q[num]["B"]);
+                    //색상 변경
+                    // $("#background-color").html(c[num][background])
+                    // $("#").html(c[num][A])
+                    // $("#background-color").html(c[num][B])
+
+                    num++;
+                }
+            }
+        </script>
+    </body>
+</html>
+

@@ -6,7 +6,7 @@
 .banner{
     width: 100%;
     height: 100vh;
-    background-color: #d03030;
+    background-color: #407060;
     background-size: cover;
     background-position: center;
 }
@@ -30,13 +30,13 @@
 }
 .navbar ul li a{
     text-decoration: none;
-    color: #22533a
+    color: #FF4C65;
 }
 .navbar ul li::after{ 
     content: '';
     height: 3px;
     width: 0%;
-    background: #22533a;
+    background: #FF4C65;
     position: absolute;
     left: 0;
     bottom: -10px;
@@ -51,7 +51,7 @@
     top: 50%;
     transform: translateY(-50%);
     text-align:center;
-    color: #22533a;
+    color: #FF4C65;
 }
 .content h1{
     font-size: 70px;
@@ -70,15 +70,15 @@ button{
     margin: 20px 10px;
     border-radius: 25px;
     font-weight: bold;
-    border: 2px solid #22533a;
+    border: 2px solid #FF4C65;
     background: transparent;
-    color: #d03030;
+    color: #FF4C65;
     cursor: pointer;
     position: relative;
     overflow: hidden;
 }
 span{
-    background: #22533a;
+    background: #FF4C65;
     height: 100%;
     width: 0;
     border-radius: 25px;
@@ -87,11 +87,10 @@ span{
     bottom: 0;
     z-index: -1;
     transition: 0.5s;
-    color: #d03030
 }
 button:hover span{
     width: 100%
 }
 button:hover {
-    border: none
+    color: #407060;
 }

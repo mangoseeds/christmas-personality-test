@@ -18,27 +18,26 @@
             <div class="content">
                 <h1>당신의 크리스마스 유형은?</h1>
                 <p>~~~</p>
-                <div>
-                    <button type="button"><span></span>시작하기</button>
-                </div>
+                 <button type="button" onClick="start()"><span></span>시작하기</button>
             </div>
         </div>
         
         <!-- QUIZ PAGE -->
         <div class="quiz_page">
             <div class="progress-bar bg-info" role="progressbar" syle="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            <h6>문제</h6>
-            <input id="type" type="hidden" value="EI">
-            <button id="A" type="button">선택1</button>
-            <button id="B" type="button">선택2</button>
-
+            <div>
+                <h6>문제</h6>
+                <input id="type" type="hidden" value="EI">
+                <button id="A" type="button">선택1</button>
+                <button id="B" type="button">선택2</button>
+            </div>           
         </div>
 
         <!-- RESULT PAGE -->
         <div class="result_page">
             <div class="banner">
                 <div class="navbar">
-                    <img src="home.png" class="home">
+                    <img src="home.png" class="logo">
                     <ul>
                         <li><a href="#">저장하기</a></li>
                         <li><a href="#">공유하기</a></li>
@@ -59,24 +58,9 @@
 
         
         <script>
-            var c_num = 1;
-            var c = {
-                1: {"background": "", "A": "", "B": "", "text": ""},
-                2: {"background": "", "A": "", "B": "", "text": ""},
-                3: {"background": "", "A": "", "B": "", "text": ""},
-                4: {"background": "", "A": "", "B": "", "text": ""},
-                5: {"background": "", "A": "", "B": "", "text": ""},
-                6: {"background": "", "A": "", "B": "", "text": ""},
-                7: {"background": "", "A": "", "B": "", "text": ""},
-                8: {"background": "", "A": "", "B": "", "text": ""},
-                9: {"background": "", "A": "", "B": "", "text": ""},
-                10: {"background": "", "A": "", "B": "", "text": ""},
-                11: {"background": "", "A": "", "B": "", "text": ""},
-                12: {"background": "", "A": "", "B": "", "text": ""}
-            }
-            var q_num = 1;
+            var num = 1;
             var q = {
-                1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래"},
+                1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래", "BackgroundColor": "#FF48B0", "AColor": "#AC936E", "BColor": "#67B346", "ButtonColor":"#009DA5"},
                 2: {"title": "친구가 작년에 준 크리스마스 선물! 일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "그래도 선물로 받았으니 일단은 가지고 있을래"},
                 3: {"title": "", "type": "EI", "A": "E~~", "B": "I~"},
                 4: {"title": "만약 내일 아침에 일어났을 때, 내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "내가 어떻게 할지 이런 저런 상상이 펼쳐진다"},
@@ -149,10 +133,12 @@
                     $("#type").val(q[num]["type"]);
                     $("#A").html(q[num]["A"]);
                     $("#B").html(q[num]["B"]);
-                    //색상 변경
-                    // $("#background-color").html(c[num][background])
-                    // $("#").html(c[num][A])
-                    // $("#background-color").html(c[num][B])
+
+                    $("#A").ButtonColor(q[num]["AColor"]);
+                    $("#B").ButtonColor(q[num]["BColor"]);
+                    $(".quiz_page").background-color(q[num]["BackgroundColor"]);
+                    $("#A.hover").color(q[num]["ButtonColor"]);
+                    $("#B.hover").color(q[num]["ButtonColor"]);
 
                     num++;
                 }

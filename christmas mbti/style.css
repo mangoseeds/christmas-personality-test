@@ -8,6 +8,20 @@
     height: 100%;
     background-color: #407060;
 }
+.quiz_page{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #FF4C65;
+    
+}
+.result_page{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #407060;    
+}
+
 .banner{
     width: 100%;
     height: 100vh;
@@ -101,17 +115,3 @@ button:hover {
 }
 
 
-.quiz_page{
-    display: none;
-    width: 100%;
-    height: 100%;
-    background: #FF4C65;
-    
-}
-
-.result_page{
-    display: none;
-    width: 100%;
-    height: 100%;
-    background-color: #407060;    
-}

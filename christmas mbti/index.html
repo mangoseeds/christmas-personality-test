@@ -4,46 +4,60 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="banner">
-            <div class="navbar">
-                <img src="home.png" class="home">
-                <ul>
-                    <li><a href="#">뒤로가기</a></li>
-                    <li><a href="#">공유하기</a></li>
-                </ul>
+        <!-- START PAGE -->
+        <div class="start_page">
+            <div class="banner">
+                <div class="navbar">
+                    <img src="home.png" class="home">
+                    <ul>
+                        <li><a href="#">공유하기</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="content">
+                <h1>당신의 크리스마스 유형은?</h1>
+                <p>~~~</p>
+                <div>
+                    <button type="button"><span></span>시작하기</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- QUIZ PAGE -->
+        <div class="quiz_page">
+            <div class="progress-bar bg-info" role="progressbar" syle="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <h6>문제</h6>
+            <input id="type" type="hidden" value="EI">
+            <button id="A" type="button">선택1</button>
+            <button id="B" type="button">선택2</button>
+
+        </div>
+
+        <!-- RESULT PAGE -->
+        <div class="result_page">
+            <div class="banner">
+                <div class="navbar">
+                    <img src="home.png" class="home">
+                    <ul>
+                        <li><a href="#">저장하기</a></li>
+                        <li><a href="#">공유하기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <h1>당신은...</h1>
+                <img src="result.png" class="result">
             </div>
         </div>
 
-        <div class="content">
-            <h1>당신의 크리스마스 유형은?</h1>
-            <p>~~~</p>
-            <div>
-                <button type="button"><span></span>시작하기</button>
-            </div>
-        </div>
-    </body>
-</html>
-    <!-- <body class="container" style="background-color:#407060 #00A95C #FFE800 #FF48B0 #928D88 #AC936E #009DA5 #3255A4 #3D5588 #00838A #BB8B41 #914E72 #0078BF #407060 #FF665E #925F52 #FF6C2F #67B346 #BB76CF #FFB511 #5EC8E5 #82D8D5 #FF4C65 #44D62C #FFE900 #FFFFFF">
-        
-        <article class="start">
-            <button type="button" onclick="start();" style="font-size:large; font-weight: bold; color:#d03030;">시작하기</button>
-        <article class="question" style="background-color:#d03030">
-            <div class="progress mt-5">
-                <div class="progress-bar bg-info" role="progressbar" syle="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            <h6 style="font-weight: bold;" class="text-center mt-5" id="title">문제</h6>
-            <input id="type" type="hidden" value="EI">
-            <button id="A" type="button" style="font-size:smaller; font-weight: bold; color:#FFFFFF; background-color:#3255a4">Primary</button>
-            <button id="B" type="button" style="font-size:smaller; font-weight: bold; color:#FFFFFF; background-color:#914E72">Primary</button>
-        <article class="result" style="background-color:#22533a">
-            <img id="img" class="mt-5" src alt="animal">
-            <div class="share" data-url="https://" data-title="크리스마스 유형 테스트" style=""></div>
-            <button type="button" onclick="start();" style="font-size:large; font-weight: bold; color:#d03030;">시작하기</button>
-        
         <input type="hidden" id="EI" value="0">
         <input type="hidden" id="SN" value="0">
         <input type="hidden" id="TF" value="0">
         <input type="hidden" id="JP" value="0">
 
+
+        
         <script>
             var c_num = 1;
             var c = {
@@ -96,9 +110,10 @@
                 "ENFP": {"img":"img_enfp.jpg"},
             }
 
+            //hide start_page, show question_page
             function start(){
-                $(".start").hide();
-                $(".question").show();
+                $(".start_page").hide();
+                $(".question_page").show();
                 next();
             }
 
@@ -114,8 +129,8 @@
 
             function next() {
                 if (num==13) {
-                    $(".question").hide();
-                    $(".result").show();
+                    $(".question_page").hide();
+                    $(".result_page").show();
 
                     var mbti = "";
 
@@ -125,12 +140,13 @@
                     ($("#JP").val()<2) ? mbti+="P" : mbti+="J";
 
                     $("#img").attr("src",result[mbti]["img"]);
-                    $("#animal").html(result[mbti]["animal"]);
+                    $("#result").html(result[mbti]["result"]);
                     $("#explain").html(rsult[mbti]["explain"]);
                 } else {
                     $(".progress-bar").attr('style','width: calc(100/12*'+num+'%)');
                     //문제 & 선택지
                     $("#title").html(q[num]["title"]);
+                    $("#type").val(q[num]["type"]);
                     $("#A").html(q[num]["A"]);
                     $("#B").html(q[num]["B"]);
                     //색상 변경
@@ -142,6 +158,6 @@
                 }
             }
         </script>
+
     </body>
 </html>
- -->

@@ -8,7 +8,7 @@
         <div class="start_page">
             <div class="banner">
                 <div class="navbar">
-                    <img src="home.png" class="home">
+                    <!-- <img src="home.png" class="home"> -->
                     <ul>
                         <li><a href="#">공유하기</a></li>
                     </ul>
@@ -18,7 +18,7 @@
             <div class="content">
                 <h1>당신의 크리스마스 유형은?</h1>
                 <p>~~~</p>
-                 <button type="button" onClick="start()"><span></span>시작하기</button>
+                <button type="button" id="startButton"><span></span>시작하기</button>
             </div>
         </div>
         
@@ -56,94 +56,105 @@
         <input type="hidden" id="JP" value="0">
 
 
-        
-        <script>
-            var num = 1;
-            var q = {
-                1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래", "BackgroundColor": "#FF48B0", "AColor": "#AC936E", "BColor": "#67B346", "ButtonColor":"#009DA5"},
-                2: {"title": "친구가 작년에 준 크리스마스 선물! 일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "그래도 선물로 받았으니 일단은 가지고 있을래"},
-                3: {"title": "", "type": "EI", "A": "E~~", "B": "I~"},
-                4: {"title": "만약 내일 아침에 일어났을 때, 내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "내가 어떻게 할지 이런 저런 상상이 펼쳐진다"},
-                5: {"title": "~~~~", "type": "JP", "A": "J~~", "B": "P~~"},
-                6: {"title": "우리 내일 밥먹자! 라고 물어보는 친구, 하지만 내일은 날씨가 안좋다", "type": "EI", "A": "크게 상관 없지", "B": "내일 말고 다른 날 어때?"},
-                7: {"title": "~~~~", "type": "TF", "A": "내가 ~~했었다가 그렇게 됐으면 슬펐을 것 같아", "B": "슬펐겠다"},
-                8: {"title": "~~~~", "type": "SN", "A": "S~~", "B": "N~~~"},
-                9: {"title": "~~~~", "type": "JP", "A": "J~~", "B": "P~~"},
-                10: {"title": "~~~~", "type": "SN", "A": "S~~", "B": "N~~~"},
-                11: {"title": "~~~~", "type": "TF", "A": "T ~~", "B": "F~~"},
-                12: {"title": "곧 2023년이 시작되는데, 나는", "type": "JP", "A": "내년에 무엇을 하고 싶은지 상세한 계획을 세워뒀다", "B": "이루고 싶은 목표 정도는 생각해 봤다"}
-            }
-
-            var result = {
-                "ISTJ": {"img":"img_istj.jpg"},
-                "ISFJ": {"img":"img_isfj.jpg"},
-                "INTJ": {"img":"img_intj.jpg"},
-                "INFJ": {"img":"img_infj.jpg"},
-                "ISTP": {"img":"img_istp.jpg"},
-                "ISFP": {"img":"img_isfp.jpg"},
-                "INTP": {"img":"img_intp.jpg"},
-                "INFP": {"img":"img_infp.jpg"},
-
-                "ESTJ": {"img":"img_estj.jpg"},
-                "ESFJ": {"img":"img_esfj.jpg"},
-                "ENTJ": {"img":"img_entj.jpg"},
-                "ENFJ": {"img":"img_enfj.jpg"},
-                "ESTP": {"img":"img_estp.jpg"},
-                "ESFP": {"img":"img_esfp.jpg"},
-                "ENTP": {"img":"img_entp.jpg"},
-                "ENFP": {"img":"img_enfp.jpg"},
-            }
-
-            //hide start_page, show question_page
-            function start(){
-                $(".start_page").hide();
-                $(".question_page").show();
-                next();
-            }
-
-            $("#A").click(function(){
-                var type = $("#type").val();
-                var preValue = $("#"+type).val();
-                $("#"+type).val(parseInt(preValue)+1);
-                next();
-            });
-            $("#B").click(function(){
-                next();
-            });
-
-            function next() {
-                if (num==13) {
-                    $(".question_page").hide();
-                    $(".result_page").show();
-
-                    var mbti = "";
-
-                    ($("#EI").val()<2) ? mbti+="I" : mbti+="E";
-                    ($("#SN").val()<2) ? mbti+="N" : mbti+="S";
-                    ($("#TF").val()<2) ? mbti+="F" : mbti+="T";
-                    ($("#JP").val()<2) ? mbti+="P" : mbti+="J";
-
-                    $("#img").attr("src",result[mbti]["img"]);
-                    $("#result").html(result[mbti]["result"]);
-                    $("#explain").html(rsult[mbti]["explain"]);
-                } else {
-                    $(".progress-bar").attr('style','width: calc(100/12*'+num+'%)');
-                    //문제 & 선택지
-                    $("#title").html(q[num]["title"]);
-                    $("#type").val(q[num]["type"]);
-                    $("#A").html(q[num]["A"]);
-                    $("#B").html(q[num]["B"]);
-
-                    $("#A").ButtonColor(q[num]["AColor"]);
-                    $("#B").ButtonColor(q[num]["BColor"]);
-                    $(".quiz_page").background-color(q[num]["BackgroundColor"]);
-                    $("#A.hover").color(q[num]["ButtonColor"]);
-                    $("#B.hover").color(q[num]["ButtonColor"]);
-
-                    num++;
-                }
-            }
-        </script>
-
     </body>
+
+    <script>
+        let num = 1;
+        const q = {
+            1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래", "BackgroundColor": "#FF48B0", "TextColor": "#AC936E"},
+            2: {"title": "친구가 작년에 준 크리스마스 선물! 일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "그래도 선물로 받았으니 일단은 가지고 있을래"},
+            3: {"title": "드레스코드가 정해진 크리스마스 파티, 나는", "type": "EI", "A": "화려한 옷을 고른다", "B": "무난한 옷을 고른다"},
+            4: {"title": "만약 내일 아침에 일어났을 때, 내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "내가 어떻게 할지 이런 저런 상상이 펼쳐진다"},
+            5: {"title": "우리 내일 만나자! 라고 물어보는 친구, 하지만 내일은 날씨가 안좋다", "type": "EI", "A": "크게 상관 없지", "B": "내일 말고 다른 날 어때?"},
+            6: {"title": "크리스마스날 알바 쉬고 싶었는데 안된다고 혼났어ㅠㅠ 라고 말하는 친구", "type": "TF", "A": "나라도 쉬고 싶을 텐데 슬펐겠다", "B": "사장님 너무하다ㅠㅠ 슬펐겠다"},
+            7: {"title": "바로 내일이 크리스마스 파티! 잠들기 전에", "type": "SN", "A": "별 생각 없이 잠든다", "B": "내일 무슨 일이 있을지 상상을 하며 잠든다"},            
+            8: {"title": "연말 파티에 친구와 나는 케이크 담당을 맡았다! 어디서 살지 심사숙고하여 고르는데", "type": "SN", "A": "검색을 대충해보면 바로 느낌이 온다", "B": "꼼꼼히 후기를 읽어보고 고른다"},
+            9: {"title": "함께 연말 파티를 위한 케이크를 친구와 사러 가기로 했는데 약속 시간에 30분이나 늦을 것 같은데", "type": "TF", "A": "미안 30분정도 늦을 것 같아. 연말이라 그런지 차가 많이 막히네", "B": "좀 많이 늦을 것 같아. 추운데 기다리게 해서 미안"},
+            10: {"title": "내 지각으로 원래 가려고 했던 케이크 가게는 영업 시간이 끝났을 때", "type": "JP", "A": "이미 가는 길에 새로운 케이크 가게를 찾아뒀고 친구를 만나서 바로 출발한다", "B": "친구랑 함께 검색하여 새로 갈 곳을 고른다"},
+            11: {"title": "계획이 흐트러진 것에 대해", "type": "JP", "A": "조금은 스트레스를 받는다", "B": "별 고민과 스트레스 없이 넘길 수 있다"},
+            12: {"title": "곧 시작되는 2023년, 나는", "type": "JP", "A": "내년에 무엇을 하고 싶은지 상세한 계획을 세워뒀다", "B": "이루고 싶은 목표 정도는 생각해 봤다"}
+        }
+
+        const result = {
+            "ISTJ": {"img":"img_istj.jpg"},
+            "ISFJ": {"img":"img_isfj.jpg"},
+            "INTJ": {"img":"img_intj.jpg"},
+            "INFJ": {"img":"img_infj.jpg"},
+            "ISTP": {"img":"img_istp.jpg"},
+            "ISFP": {"img":"img_isfp.jpg"},
+            "INTP": {"img":"img_intp.jpg"},
+            "INFP": {"img":"img_infp.jpg"},
+
+            "ESTJ": {"img":"img_estj.jpg"},
+            "ESFJ": {"img":"img_esfj.jpg"},
+            "ENTJ": {"img":"img_entj.jpg"},
+            "ENFJ": {"img":"img_enfj.jpg"},
+            "ESTP": {"img":"img_estp.jpg"},
+            "ESFP": {"img":"img_esfp.jpg"},
+            "ENTP": {"img":"img_entp.jpg"},
+            "ENFP": {"img":"img_enfp.jpg"},
+        }
+
+        //hide start_page, show question_page
+        $("#startButton").click(function(){
+            $(".start_page").hide();
+            $(".question_page").show();
+            next();
+        })
+
+        $("#A").click(function(){
+            let type = $("#type").val();
+            let preValue = $("#"+type).val();
+            $("#"+type).val(parseInt(preValue)+1);
+            next();
+        });
+        $("#B").click(function(){
+            next();
+        });
+
+        function next() {
+            if (num==13) {
+                $(".question_page").hide();
+                $(".result_page").show();
+
+                let mbti = "";
+
+                ($("#EI").val()<2) ? mbti+="I" : mbti+="E";
+                ($("#SN").val()<2) ? mbti+="N" : mbti+="S";
+                ($("#TF").val()<2) ? mbti+="F" : mbti+="T";
+                ($("#JP").val()<2) ? mbti+="P" : mbti+="J";
+
+                $("#img").attr("src",result[mbti]["img"]);
+                $("#result").html(result[mbti]["result"]);
+                $("#explain").html(rsult[mbti]["explain"]);
+            } else {
+                $(".progress-bar").attr('style','width: calc(100/12*'+num+'%)');
+                //문제 & 선택지
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
+
+                $(".quiz_page").style.BackgroundColor(q[num]["BackgroundColor"]);
+                $("#A").style.BackgroundColor(q[num]["BackgroundColor"]);
+                $("#A").style.TextColor(q[num]["TextColor"]);
+                $("#B").style.BackgroundColor(q[num]["BackgroundColor"]);
+                $("#B").style.TextColor(q[num]["TextColor"]);
+
+                let A = $("#A");
+                A.addEventListener("mouseenter", function(event){
+                    event.target.style.color = q[num]["TextColor"];
+                    event.target.style.TextColor = q[num]["BackgroundColor"];
+                }, false);
+                A.addEventListener("mouseleave", function(event){
+                    event.target.style.color = q[num]["BackgroundColor"];
+                    event.target.style.TextColor = q[num]["TextColor"];
+                }, false);
+
+                num++;
+            }
+        }
+
+    </script>
+        
 </html>

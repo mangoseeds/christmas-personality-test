@@ -2,6 +2,7 @@
     <head>
         <title>크리스마스 유형 테스트</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- START PAGE -->
@@ -105,15 +106,15 @@
 
             //hide start_page, show question_page
             function start(){
-                document.getElementById(".start_page").hide();
-                document.getElementById(".question_page").show();
+                $(".start_page").hide();
+                $(".question_page").show();
                 next();
             };
             
             function Aclick(){
-                let type = document.getElementById("#type").val();
-                let preValue = document.getElementById("#"+type).val();
-                document.getElementById("#"+type).val(parseInt(preValue)+1);
+                let type = $("#type").val();
+                let preValue = $("#"+type).val();
+                $("#"+type).val(parseInt(preValue)+1);
                 next();
             };
             function Bclick(){

@@ -1,6 +1,9 @@
 <html>
     <head>
-        <title>크리스마스 유형 테스트</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="나의 크리스마스 유형을 알아보세요.">
+        <meta name="keywords" content="크리스마스, 크리스마스 테스트, 성격 테스트, mbti, 크리스마스 mbti, mbti 크리스마스, 크리스마스 성격 테스트">
+        <meta title="크리스마스 유형 테스트">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
@@ -18,21 +21,18 @@
     
             <div class="content">
                 <h1>크리스마스 유형 테스트</h1>
-                <button type="button" class="button" onclick="start();" style="width:inherit">시작하기</button>
+                <button id="start-button" type="button" class="button" onclick="start();" style="width:inherit; color: #FF4C65; border: 3px solid #FF4C65;">시작하기</button>
             </div>
         </article>
         
         <!-- QUIZ PAGE -->
         <article class="quiz_page">
-            <div class="progress-bar bg-info" role="progressbar" syle="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             <div>
-                <h1 style="width: 100%; height: 50%">문제</h1>
-                <input id="type" type="hidden" value="EI">
-                <div>
-                    <button id="A" type="button" onclick="Aclick();">선택1</button><!--
-                    --><button id="B" type="button" onclick="Bclick();">선택2</button>
-                </div>
-            </div>           
+                <h1 id="question" style="padding: 100px">문제</h1>
+            </div>
+            <input id="type" type="hidden" value="EI">
+            <button id="A" type="button" class="button" onclick="Aclick();">선택1</button><!--
+            --><button id="B" type="button" class="button" onclick="Bclick();">선택2</button>           
         </article>
 
         <!-- RESULT PAGE -->
@@ -61,18 +61,19 @@
         <script>
             let num = 1;
             const q = {
-                1: {"title": "연말 파티에 초대 받은 당신! 꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지 오랜만에 못보던 얼굴들도 보고", "B": "난 그냥 집에서 재밌는 영화나 볼래", "BackgroundColor": "#FF48B0", "TextColor": "#AC936E"},
-                2: {"title": "친구가 작년에 준 크리스마스 선물! 일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "그래도 선물로 받았으니 일단은 가지고 있을래"},
-                3: {"title": "드레스코드가 정해진 크리스마스 파티, 나는", "type": "EI", "A": "화려한 옷을 고른다", "B": "무난한 옷을 고른다"},
-                4: {"title": "만약 내일 아침에 일어났을 때, 내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "내가 어떻게 할지 이런 저런 상상이 펼쳐진다"},
-                5: {"title": "우리 내일 만나자! 라고 물어보는 친구, 하지만 내일은 날씨가 안좋다", "type": "EI", "A": "크게 상관 없지", "B": "내일 말고 다른 날 어때?"},
-                6: {"title": "친구에게 크리스마스 선물을 주었을 때 더 듣기 좋은 말은", "type": "TF", "A": "내가 갖고 싶다고 얘기했던거네! 어떻게 기억력이 이렇게 좋아?", "B": "내가 딱 원했던건데, 역시 넌 섬세해"},
-                7: {"title": "바로 내일이 크리스마스 파티! 잠들기 전에", "type": "SN", "A": "별 생각 없이 잠든다", "B": "내일 무슨 일이 있을지 상상을 하며 잠든다"},            
-                8: {"title": "연말 파티에 친구와 나는 케이크 담당을 맡았다! 어디서 살지 심사숙고하여 고르는데", "type": "SN", "A": "검색을 대충해보면 바로 느낌이 온다", "B": "꼼꼼히 후기를 읽어보고 고른다"},
-                9: {"title": "함께 연말 파티를 위한 케이크를 친구와 사러 가기로 했는데 약속 시간에 30분이나 늦을 것 같은데", "type": "TF", "A": "미안 30분정도 늦을 것 같아. 연말이라 그런지 차가 많이 막히네", "B": "좀 많이 늦을 것 같아. 추운데 기다리게 해서 미안"},
-                10: {"title": "내 지각으로 원래 가려고 했던 케이크 가게는 영업 시간이 끝났을 때", "type": "JP", "A": "이미 가는 길에 새로운 케이크 가게를 찾아뒀고 친구를 만나서 바로 출발한다", "B": "친구랑 함께 검색하여 새로 갈 곳을 고른다"},
-                11: {"title": "계획이 흐트러진 것에 대해", "type": "JP", "A": "조금은 스트레스를 받는다", "B": "별 고민과 스트레스 없이 넘길 수 있다"},
-                12: {"title": "곧 시작되는 2023년, 나는", "type": "JP", "A": "내년에 무엇을 하고 싶은지 상세한 계획을 세워뒀다", "B": "이루고 싶은 목표 정도는 생각해 봤다"}
+                1: {"q": "연말 파티에 초대 받은 당신!<br>꽤 많은 사람이 모여 있을 거라고 하는데", "type": "EI", "A": "파티 좋지<br>오랜만에 못보던 얼굴들도 보고", "B": "귀찮아<br>그냥 집에서 재밌는 영화나 볼래", "c1": "#FF665E", "c2": "#5EC8E5"},
+                2: {"q": "친구가 작년에 준 크리스마스 선물<br>일년동안 한번도 사용한 적이 없는데", "type": "TF", "A": "더 잘 활용할 사람에게 주자", "B": "선물이니까 일단은 가지고 있을래", "c1": "#AC936E", "c2": "#FF4C65"},
+                3: {"q": "드레스코드가 정해진<br>크리스마스 파티에 나는", "type": "EI", "A": "화려한 옷을 고른다", "B": "무난한 옷을 고른다", "c1": "#3D5588", "c2": "#BB76CF"},
+                4: {"q": "만약 내일 아침에 일어났을 때<br>내가 크리스마스 트리로 변해있으면?", "type": "SN", "A": "그건 불가능해", "B": "이런 저런 상상이 펼쳐진다", "c1": "#925F52", "c2": "#44D62C"},
+                5: {"q": "우리 내일 만나자! 라고 물어보는 친구<br>하지만 내일은 날씨가 안좋다", "type": "EI", "A": "크게 상관 없지", "B": "내일 말고 다른 날 어때?", "c1": "#00838A", "c2": "#BB8B41"},
+                6: {"q": "친구에게 크리스마스 선물을 주었을 때<br>더 듣기 좋은 말은", "type": "TF", "A": "내가 갖고 싶다고 얘기했던거네!<br>어떻게 기억력이 이렇게 좋아?", "B": "내가 딱 원했던건데,<br>역시 넌 섬세해", "c1": "#652271", "c2": "#914E72"},
+                7: {"q": "바로 내일이 크리스마스 파티!<br>잠들기 전에", "type": "SN", "A": "별 생각 없이<br>잠든다", "B": "내일 무슨 일이 있을지<br>상상을 하며 잠든다", "c1": "#67B346", "c2": "#0078BF"},            
+                8: {"q": "연말 파티에 친구와 나는 케이크 담당을 맡았다!<br>어디서 살지 심사숙고하여 고르는데", "type": "SN", "A": "대충 검색해보면<br>바로 느낌이 온다", "B": "꼼꼼히 후기를<br>읽어보고 고른다", "c1": "#FF6C2F", "c2": "#407020"},
+                9: {"q": "친구와 함께 케이크를 사러 가기로 했는데<br> 약속 시간에 30분이나 늦을 것 같은데", "type": "TF", "A": "미안 30분정도 늦을 것 같아<br>연말이라 그런지 차가 많이 막히네", "B": "좀 많이 늦을 것 같아<br>추운데 기다리게 해서 미안", "c1": "#82D8D5", "c2": "#009DA5"},
+                10: {"q": "내 지각으로 원래 가려고 했던 케이크 가게의<br> 영업 시간이 끝났을 때", "type": "JP", "A": "이미 새로운 케이크 가게를 찾았고<br>친구를 만나서 바로 출발한다", "B": "친구랑 함께 검색하여<br>새로 갈 곳을 고른다", "c1": "#3255A4", "c2": "#00A95C"},
+                11: {"q": "계획이 흐트러진 것에 대해", "type": "JP", "A": "조금은 스트레스를 받는다", "B": "스트레스 없이 넘길 수 있다", "c1": "#FF8EBB", "c2": "#67B346"},
+                12: {"q": "곧 시작되는 2023년, 나는", "type": "JP", "A": "내년을 위한 상세한 계획을 세워뒀다", "B": "이루고 싶은 목표 정도는 생각해 봤다", "c1": "#BB3A33", "c2": "#B0DBFF"},
+                13: {"c1": "#403326"}
             }
 
             const result = {
@@ -95,6 +96,7 @@
                 "ENFP": {"img":"img_enfp.jpg"},
             }
 
+            //copy url to clipboard
             function copyURI(evt){
                 evt.preventDefault();
                 navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
@@ -104,36 +106,64 @@
                 });
             };
 
-            //hide start_page, show question_page
+            $(document).ready(function(){
+                $(".start_page").show();
+                $(".quiz_page").hide();
+                $(".result_page").hide();
+
+                $("#start-button").hover(function(){
+                    $(this).css("background-color", "#FF4C65");
+                    $(this).css("color", "#407060");
+                    $(this).css("border", "3px solid #FF4C65");
+                }, function(){
+                    $(this).css("background-color", "#407060");
+                    $(this).css("color", "#FF4C65");
+                    $(this).css("border", "3px solid #FF4C65");
+                });
+            })
+
+            //hide start_page, show quiz_page
             function start(){
                 $(".start_page").hide();
-                $(".question_page").show();
-                next();
-            };
-            
-            function Aclick(){
-                let type = $("#type").val();
-                let preValue = $("#"+type).val();
-                $("#"+type).val(parseInt(preValue)+1);
-                next();
-            };
-            function Bclick(){
+                $(".quiz_page").show();
                 next();
             };
 
-            // $("#A").click(function(){
-            //     let type = $("#type").val();
-            //     let preValue = $("#"+type).val();
-            //     $("#"+type).val(parseInt(preValue)+1);
-            //     next();
-            // });
-            // $("#B").click(function(){
-            //     next();
-            // });
+            $("#A").click(function(){
+                var type = $("#type").val();
+                var preValue = $("#"+type).val();
+                $("#"+type).val(parseInt(preValue)+1);
+                next();
+            });
+            $("#B").click(function(){
+                next();
+            });
+
+            $("#A").hover(function(){
+                $(this).css("background-color", q[num]["c1"]);
+                $(this).css("color", q[num-1]["c2"]);
+                $(this).css("border", "3px solid"+q[num-1]["c1"]);
+            }, function(){
+                $(this).css("background-color", q[num-1]["c2"]);
+                $(this).css("color", q[num-1]["c1"]);
+                $(this).css("border", "3px solid"+q[num-1]["c1"]);
+            });
+            $("#B").hover(function(){
+                $(this).css("background-color", q[num]["c1"]);
+                $(this).css("color", q[num-1]["c2"]);
+                $(this).css("border", "3px solid"+q[num-1]["c1"]);
+            }, function(){
+                $(this).css("background-color", q[num-1]["c2"]);
+                $(this).css("color", q[num-1]["c1"]);
+                $(this).css("border", "3px solid"+q[num-1]["c1"]);
+            });
 
             function next() {
                 if (num==13) {
-                    $(".question_page").hide();
+                    // let colors = ['#914E72', '#0078BF', '#00A95C', '#3255A4', '#3D5588', '#00838A', '#BB8B41', '#407060', '#FF665E', '#925F52', '#FFE800', '#FF6C2F', '#FF48B0', '#AC936E', '#67B346', '#009DA5', '#BB76CF', '#FFB511', '#928D88', '#5EC8E5', '#82D8D5', '#FFE900', '#FF4C65', '#44D62C', '#FFFFFF']
+                    // const choose = colors[Math.floor(Math.random() * colors.length)]
+
+                    $(".quiz_page").hide();
                     $(".result_page").show();
 
                     let mbti = "";
@@ -147,28 +177,20 @@
                     $("#result").html(result[mbti]["result"]);
                     $("#explain").html(rsult[mbti]["explain"]);
                 } else {
-                    $(".progress-bar").attr('style','width: calc(100/12*'+num+'%)');
                     //문제 & 선택지
-                    $("#title").html(q[num]["title"]);
+                    $("#question").html(q[num]["q"]);
                     $("#type").val(q[num]["type"]);
                     $("#A").html(q[num]["A"]);
                     $("#B").html(q[num]["B"]);
-
-                    $(".quiz_page").style.BackgroundColor(q[num]["BackgroundColor"]);
-                    $("#A").style.BackgroundColor(q[num]["BackgroundColor"]);
-                    $("#A").style.TextColor(q[num]["TextColor"]);
-                    $("#B").style.BackgroundColor(q[num]["BackgroundColor"]);
-                    $("#B").style.TextColor(q[num]["TextColor"]);
-
-                    let A = $("#A");
-                    A.addEventListener("mouseenter", function(event){
-                        event.target.style.color = q[num]["TextColor"];
-                        event.target.style.TextColor = q[num]["BackgroundColor"];
-                    }, false);
-                    A.addEventListener("mouseleave", function(event){
-                        event.target.style.color = q[num]["BackgroundColor"];
-                        event.target.style.TextColor = q[num]["TextColor"];
-                    }, false);
+                    //색 세팅
+                    $(".quiz_page").attr("style","background-color: "+q[num]["c1"]);
+                    $("#question").css("color", q[num]["c2"])
+                    $("#A").css("background-color", q[num]["c2"]);
+                    $("#A").css("color", q[num]["c1"]);
+                    $("#A").css("border", "3px solid"+q[num]["c1"]);
+                    $("#B").css("background-color", q[num]["c2"]);
+                    $("#B").css("color", q[num]["c1"]);
+                    $("#B").css("border", "3px solid"+q[num]["c1"]);
 
                     num++;
                 }
@@ -176,5 +198,4 @@
 
         </script>
     </body> 
-
 </html>

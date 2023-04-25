@@ -13,7 +13,7 @@
         <article class="start_page">
             <div class="banner">
                 <div class="navbar">
-                    <img src="home.png" class="home"> <!--배너 사진은 가능한 결과 조그맣게 쭉 이어서; 클릭하면 크리스마스 사진? -->
+                    <!-- <img src="home.png" class="home"> 배너 사진은 가능한 결과 조그맣게 쭉 이어서; 클릭하면 크리스마스 사진? -->
                     <ul>
                         <li><a href="www.testurl" onclick="copyURI(event)">공유하기</a></li>
                     </ul>
@@ -31,9 +31,10 @@
             <div>
                 <h1 id="question" style="padding: 100px">문제</h1>
             </div>
-            <input id="type" type="hidden" value="EI">
-            <button id="A" type="button" class="button" onclick="Aclick();">선택1</button><!--
-            --><button id="B" type="button" class="button" onclick="Bclick();">선택2</button>           
+            <div id="button_container">
+                <input id="type" type="hidden" value="EI">
+                <button id="A" type="button" class="button" onclick="Aclick();">선택1</button><button id="B" type="button" class="button" onclick="Bclick();">선택2</button>           
+            </div>
         </article>
 
         <!-- RESULT PAGE -->
@@ -42,7 +43,7 @@
                 <div class="navbar">
                     <img src="home.png" class="logo">
                     <ul>
-                        <li><a href="image file" download>저장하기</a></li>
+                        <!-- <li><a href="image file" download>저장하기</a></li> -->
                         <li><a href="www.testurl" onclick="copyURI(event)">공유하기</a></li>
                     </ul>
                 </div>

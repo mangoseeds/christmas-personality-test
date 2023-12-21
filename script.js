@@ -1,0 +1,369 @@
+const startPage = document.getElementById("start_page");
+const quizPage = document.getElementById("quiz_page");
+const resultPage = document.getElementById("result_page");
+
+let num = 1;
+const q = {
+    1: {
+        q: "연말 파티에 초대 받은 당신!<br>꽤 많은 사람이 모여 있을 거라고 하는데",
+        type: "EI",
+        A: "파티 좋지<br>오랜만에 못보던 얼굴들도 보고",
+        B: "귀찮아<br>그냥 집에서 재밌는 영화나 볼래",
+        c1: "#ac2c44",
+        c2: "#60a72c",
+    },
+    2: {
+        q: "친구가 작년에 준 크리스마스 선물<br>일년동안 한번도 사용한 적이 없는데",
+        type: "TF",
+        A: "더 잘 활용할 사람에게 주자",
+        B: "선물이니까 일단은 가지고 있을래",
+        c1: "#77241e",
+        c2: "#1ca252",
+    },
+    3: {
+        q: "드레스코드가 정해진<br>크리스마스 파티에 나는",
+        type: "EI",
+        A: "화려한 옷을 고른다",
+        B: "무난한 옷을 고른다",
+        c1: "#3c9560",
+        c2: "#913c46",
+    },
+    4: {
+        q: "만약 내일 아침에 일어났을 때<br>내가 크리스마스 트리로 변해있으면?",
+        type: "SN",
+        A: "그건 불가능해",
+        B: "이런 저런 상상이 펼쳐진다",
+        c1: "#6a1c0f",
+        c2: "#c83735",
+    },
+    5: {
+        q: "우리 내일 만나자! 라고 물어보는 친구<br>하지만 내일은 날씨가 안좋다",
+        type: "EI",
+        A: "크게 상관 없지",
+        B: "내일 말고 다른 날 어때?",
+        c1: "#7e8b44",
+        c2: "#7f2910",
+    },
+    6: {
+        q: "친구에게 크리스마스 선물을 주었을 때<br>더 듣기 좋은 말은",
+        type: "TF",
+        A: "내가 갖고 싶다고 얘기했던거네!<br>어떻게 기억력이 이렇게 좋아?",
+        B: "내가 딱 원했던건데,<br>역시 넌 섬세해",
+        c1: "#66bc4d",
+        c2: "#f93e3e",
+    },
+    7: {
+        q: "바로 내일이 크리스마스 파티!<br>잠들기 전에",
+        type: "SN",
+        A: "별 생각 없이<br>잠든다",
+        B: "내일 무슨 일이 있을지<br>상상을 하며 잠든다",
+        c1: "#185033",
+        c2: "#ca484a",
+    },
+    8: {
+        q: "연말 파티에 친구와 나는 케이크 담당을 맡았다!<br>어디서 살지 심사숙고하여 고르는데",
+        type: "SN",
+        A: "대충 검색해보면<br>바로 느낌이 온다",
+        B: "꼼꼼히 후기를<br>읽어보고 고른다",
+        c1: "#729579",
+        c2: "#407020",
+    },
+    9: {
+        q: "친구와 함께 케이크를 사러 가기로 했는데<br> 약속 시간에 30분이나 늦을 것 같은데",
+        type: "TF",
+        A: "미안 30분정도 늦을 것 같아<br>연말이라 그런지 차가 많이 막히네",
+        B: "좀 많이 늦을 것 같아<br>추운데 기다리게 해서 미안",
+        c1: "#b81a1a",
+        c2: "#7cb851",
+    },
+    10: {
+        q: "내 지각으로 원래 가려고 했던 케이크 가게의<br> 영업 시간이 끝났을 때",
+        type: "JP",
+        A: "이미 새로운 케이크 가게를 찾았고<br>친구를 만나서 바로 출발한다",
+        B: "친구랑 함께 검색하여<br>새로 갈 곳을 고른다",
+        c1: "#92b74a",
+        c2: "#b9313e",
+    },
+    11: {
+        q: "계획이 흐트러진 것에 대해",
+        type: "JP",
+        A: "조금은 스트레스를 받는다",
+        B: "스트레스 없이 넘길 수 있다",
+        c1: "#af383c",
+        c2: "#26cc68",
+    },
+    12: {
+        q: "곧 시작되는 2023년, 나는",
+        type: "JP",
+        A: "내년을 위한 상세한 계획을 세워뒀다",
+        B: "이루고 싶은 목표 정도는 생각해 봤다",
+        c1: "#67B346",
+        c2: "#BB3A33",
+    },
+    13: { c1: "#0d642f", c2: "#ab2323" },
+};
+const result = {
+    ISTJ: {
+        img: "img_istj.jpg",
+        result: "시원한 페퍼민트 사탕",
+        extra: "",
+        gift: "차 세트",
+        explain:
+            "규칙을 잘 지키고, 원리 원칙적이에요.<br>정리정돈을 잘해요.<br>주어진 일은 끝까지 해내요.<br>휴일에는 집에 있는게 좋아요.<br>가까운 사람에게는 직설적이에요.<br>다른 사람들이 내 일에 참견하는 건 싫어요.<br>예고 없이 갑작스러운 변화는 싫어요.",
+    },
+
+    ISFJ: {
+        img: "img_isfj.jpg",
+        result: "맑은 눈사람",
+        extra: "",
+        gift: "달력",
+        explain:
+            "혼자 있는 시간이 좋아요.<br>길고 안정적인 관계가 좋아요.<br>동정심이 많아 타인에게 꾸준하고 헌신적이에요.<br>타인의 신뢰가 좋아요.<br>실용적이에요.<br>.<br>.",
+    },
+
+    INTJ: {
+        img: "img_intj.jpg",
+        result: "선물이 가득 담긴 양말 주머니",
+        extra: "",
+        gift: "나무 체스보드",
+        explain:
+            "독립적이고 논리적이에요.<br>나에 대한 확신이 있어요. 무엇이든 잘 해낼 수 있을 것 같아요.<br>계획과 전략을 세우는 것이 재밌어요.<br>기존의 편의성보다는 혁신적인 발상을 하고 싶어요.<br>과정보다 결과가 중요해요.<br>이유 없이 무언가를 맹목적으로 따르는 건 싫어요.<br>재미만 추구하는 관계에는 별 관심이 없어요.",
+    },
+
+    INFJ: {
+        img: "img_infj.jpg",
+        result: "미스테리 루돌프",
+        extra: "",
+        gift: "책",
+        explain:
+            "감정적이면서 동시에 이성적이에요.<br>타인을 잘 꿰뚫어봐요.<br>타인에 의해 휘둘리지 않고 결단력 있어요.<br>몽상에 빠지는 건 재밌어요.<br>왜? 라는 말을 자주 해요.<br>영감이 뛰어나고 통찰력이 깊어요.<br>궁금한 사람이 생기면 빤히 처다보며 분석해요.",
+    },
+
+    ISTP: {
+        img: "img_istp.jpg",
+        result: "따뜻하고 향기로운 캔들",
+        extra: "",
+        gift: "폴라로이드",
+        explain:
+            "틀에 박히고 규칙을 따르는 생활은 싫어요.<br>주관이 뚜렷해요.<br>마음에 없는 이야기는 안해요.<br>관심분야가 아니면 눈길도 안줘요.<br>생각은 적극적이지만 행동은 소극적이에요.<br>혼자 보내는 시간을 즐겨요.<br>정밀함과 주의를 기울여야하는 일을 잘해요.",
+    },
+
+    ISFP: {
+        img: "img_isfp.jpg",
+        result: "크리스마스 영화",
+        extra: "",
+        gift: "파자마",
+        explain:
+            "현재에 집중하며 순간순간에 몰두해요.<br>남을 잘 믿고 의심하지 않아요.<br>분쟁을 피하고 조화롭게 지내려고 노력해요.<br>차분함을 유지해요.<br>타인의 비판에도 개방적이며 잘 수긍해요.<br>인내심이 있고 성실해요.<br>규칙이란 틀에 묶이는 건 싫어요.",
+    },
+
+    INTP: {
+        img: "img_intp.jpg",
+        result: "따뜻한 온기를 주는 벽난로",
+        extra: "",
+        gift: "목도리",
+        explain:
+            "엉뚱함과 특이한 유머감각이 있어요.<br>사람의 심리를 잘 꿰뚫어봐요.<br>결과보다 과정이 중요해요.<br>스스로에게 엄격하고 타인에게 너그러워요.<br>논리적으로 맞다고 생각되면 본인을 향한 비난도 수긍해요.<br>친해지기 전에는 마음 속을 이해하기 어려워요.<br>강강약약 스타일이에요.",
+    },
+
+    INFP: {
+        img: "img_infp.jpg",
+        result: "포장지 속의 선물",
+        extra: "",
+        gift: "손편지",
+        explain:
+            "이해심이 많고, 개방적이에요.<br>고정관념이 없어요.<br>가식적인 것은 싫어요. 진실과 진정성을 추구해요.<br>도덕적인 것이 중요해요.<br>독특한 감수성을 가지고 있어요.<br>.<br>.",
+    },
+
+    ESTJ: {
+        img: "img_estj.jpg",
+        result: "새하얀 눈송이",
+        extra: "",
+        gift: "딸기 케이크",
+        explain:
+            ".<br>.<br>새로운 지식을 학습하거나 취미를 배우는 것을 좋아해요.<br>영혼 없는 리액션이 티날 때가 있어요.<br>명확한 결론이 나는 대화를 선호해요.<br>.<br>.",
+    },
+
+    ESFJ: {
+        img: "img_esfj.jpg",
+        result: "화사한 크리스마스 리스",
+        extra: "",
+        gift: "공연 티켓",
+        explain:
+            "사람이 좋아요. 스트레스를 받으면 누군가를 만나야해요.<br>공감 능력이 좋아요. 진심으로 공감하지 않아도 상대방 기분을 잘 맞춰줘요.<br>마음 속으론 옳고 그름을 날카롭게 구분하지만 주위 분위기를 살피며 행동하고 말해요.<br>정이 많아요.<br>단호한 의견을 내면, 그것은 매우 진심이에요.<br>귀가 얇아요.<br>한번 좋아하면 헌신하고, 배신하지 않아요.",
+    },
+
+    ENTJ: {
+        img: "img_entj.jpg",
+        result: "스노우맨 오르골",
+        extra: "",
+        gift: "알람 시계",
+        explain:
+            "내 분야에서 완변주의를 추구해요.<br>항상 계획하고, 반드시 실행에 옮겨요.<br>사람의 능력을 빠르게 알아차려요.<br>감정 표현을 솔직하게 해요.<br>고집이 세지만, 논리적으로 납득 가능한 비판에 대한 수용은 빨라요.<br>반복되는 일상은 싫지만, 갑작스러운 변화도 싫어요.<br>다른 사람의 평가를 신경 쓰지 않아요.",
+    },
+
+    ENFJ: {
+        img: "img_enfj.jpg",
+        result: "캐롤 음악",
+        extra: "",
+        gift: "꽃",
+        explain:
+            "인생과 인간을 따뜻하게 바라봐요.<br>사람을 좋아하기 때문에 호감있는 사람에게는 더 대가없이 배풀어요.<br>관심사가 다양하며, 학습 속도가 빨라요.<br>감정이입에 뛰어나 스스로 스트레스를 받는 경우가 있어요.<br>타인을 잘 배려해주고, 동시에 배려 받는 걸 당연히 여기지 않고 고마움을 잘 표현해요.<br>타인을 비판하지 않지만, 자기 반성은 잘하고, 이를 원동력으로 삼아요.<br>관계에 있어 진실함과 온전함이 중요해요.",
+    },
+
+    ESTP: {
+        img: "img_estp.jpg",
+        result: "진저브레트 쿠키",
+        extra: "",
+        gift: "딸기 타르트",
+        explain:
+            "장난치는 걸 좋아하는 말썽꾸러기에요.<br>현재를 중요한 시점으로 여겨요.<br>중심에 서는 것과 관심을 즐겨요.<br>관찰력이 뛰어나 사람 분석을 잘해요.<br>내기를 좋아하고, 스릴 있는 것도 좋아해요.<br>.<br>.",
+    },
+
+    ESFP: {
+        img: "img_esfp.jpg",
+        result: "반짝반짝 트리 위의 별",
+        extra: "",
+        gift: "장갑",
+        explain:
+            "매우 밝은 성격으로 모임을 주도하는 분위기 메이커에요.<br>정이 많고 사람을 좋아해요.<br>내 이야기를 할 때 솔직하게 진심을 잘 털어놓는 편이에요.<br>자유로울 때 능력을 발휘해요.<br>예전의 일을 쉽게 잊고 잘 털어내요.<br>집에 혼자 있는 건 답답해요.<br>하고 싶은 말이 많은데, 이를 다 못할 때가 있어요.",
+    },
+
+    ENTP: {
+        img: "img_entp.jpg",
+        result: "배경을 채우는 묵직한 재즈 음악",
+        extra: "",
+        gift: "목도리",
+        explain:
+            "즉흥적이고, 유연하고, 순발력이 좋아요.<br>가치관이 뚜렷하며 이를 거리낌 없이 드러내요.<br>경쟁심이 강하고, 논리력이 뛰어나요.<br>벼락치기 공부를 선호해요.<br>알고만 지내는 사이와 친한 사이의 선이 확실해요.<br>외향적이지만 혼자 있는 시간도 중요해요.<br>평소 자신감 넘쳐요.",
+    },
+
+    ENFP: {
+        img: "img_enfp.jpg",
+        result: "분위기를 띄우는 샹그리아",
+        extra: "",
+        gift: "무드등",
+        explain:
+            "사람을 기쁘게 해주는 능력이 있어요. 고민도 잘 들어줘요.<br>분위기를 잘 띄운 후에 나는 뒤로 빠져요.<br>외향적인 사람보다는 내향적인 사람들 사이에서 모임을 잘 주도해요.<br>선생님이 마음에 들면 하기 싫은 과목도 잘해요.<br>인생을 즐겁게 살려고 노력해요.<br>반복적이고 변화가 없는 일상은 답답하고 지루해요.<br>계획하기 보다는 그때 그때 일을 처리해요.",
+    },
+};
+
+function copyURI(evt) {
+    evt.preventDefault();
+    navigator.clipboard.writeText(evt.target.getAttribute("href")).then(
+        () => {
+            /*clipboard successfully set */
+        },
+        () => {
+            /*clipboard set failed */
+        }
+    );
+}
+
+document.addEventListener("DOMContentLoaded", function (){
+    startPage.style.visibility = 'visible';
+    quizPage.style.visibility = 'hidden';
+    resultPage.style.visibility = 'hidden';
+    document.getElementById("start-button").
+
+)};
+$(document).ready(function () {
+    $(".start_page").show();
+    $(".quiz_page").hide();
+    $(".result_page").hide();
+
+    $("#start-button").hover(
+        function () {
+            $(this).css("background-color", "#bd1111");
+            $(this).css("color", "#185033");
+            $(this).css("border", "3px solid #bd1111");
+        },
+        function () {
+            $(this).css("background-color", "#185033");
+            $(this).css("color", "#bd1111");
+            $(this).css("border", "3px solid #bd1111");
+        }
+    );
+});
+
+//hide start_page, show quiz_page
+function start() {
+    $(".start_page").hide();
+    $(".quiz_page").show();
+    next();
+}
+
+$("#A").click(function () {
+    var type = $("#type").val();
+    var preValue = $("#" + type).val();
+    $("#" + type).val(parseInt(preValue) + 1);
+    next();
+});
+$("#B").click(function () {
+    next();
+});
+
+$("#A").hover(
+    function () {
+        $(this).css("background-color", q[num]["c2"]);
+        $(this).css("color", q[num]["c1"]);
+        $(this).css("border", "3px solid" + q[num]["c2"]);
+    },
+    function () {
+        $(this).css("background-color", q[num - 1]["c2"]);
+        $(this).css("color", q[num - 1]["c1"]);
+        $(this).css("border", "3px solid" + q[num - 1]["c1"]);
+    }
+);
+$("#B").hover(
+    function () {
+        $(this).css("background-color", q[num]["c2"]);
+        $(this).css("color", q[num]["c1"]);
+        $(this).css("border", "3px solid" + q[num]["c2"]);
+    },
+    function () {
+        $(this).css("background-color", q[num - 1]["c2"]);
+        $(this).css("color", q[num - 1]["c1"]);
+        $(this).css("border", "3px solid" + q[num - 1]["c1"]);
+    }
+);
+
+function next() {
+    if (num == 13) {
+        // let colors = ['#914E72', '#0078BF', '#00A95C', '#3255A4', '#3D5588', '#00838A', '#BB8B41', '#407060', '#FF665E', '#925F52', '#FFE800', '#FF6C2F', '#FF48B0', '#AC936E', '#67B346', '#009DA5', '#BB76CF', '#FFB511', '#928D88', '#5EC8E5', '#82D8D5', '#FFE900', '#FF4C65', '#44D62C', '#FFFFFF']
+        // const choose = colors[Math.floor(Math.random() * colors.length)]
+
+        $(".quiz_page").hide();
+        $(".result_page").show();
+
+        let mbti = "";
+
+        $("#EI").val() < 2 ? (mbti += "I") : (mbti += "E");
+        $("#SN").val() < 2 ? (mbti += "N") : (mbti += "S");
+        $("#TF").val() < 2 ? (mbti += "F") : (mbti += "T");
+        $("#JP").val() < 2 ? (mbti += "P") : (mbti += "J");
+
+        $("#img").attr("src", result[mbti]["img"]);
+        $("#result").html(result[mbti]["result"]);
+        $("#explain").html(result[mbti]["explain"]);
+        $("#extra").html(result[mbti]["extra"]);
+        $("#gift").html(result[mbti]["gift"]);
+    } else {
+        //문제 & 선택지
+        $("#question").html(q[num]["q"]);
+        $("#type").val(q[num]["type"]);
+        $("#A").html(q[num]["A"]);
+        $("#B").html(q[num]["B"]);
+        //색 세팅
+        $(".quiz_page").attr("style", "background-color: " + q[num]["c1"]);
+        $("#question").css("color", q[num]["c2"]);
+        $("#A").css("background-color", q[num]["c2"]);
+        $("#A").css("color", q[num]["c1"]);
+        $("#A").css("border", "3px solid" + q[num]["c1"]);
+        $("#B").css("background-color", q[num]["c2"]);
+        $("#B").css("color", q[num]["c1"]);
+        $("#B").css("border", "3px solid" + q[num]["c1"]);
+
+        num++;
+    }
+}

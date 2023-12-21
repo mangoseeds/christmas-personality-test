@@ -3,7 +3,6 @@
 // const resultPage = document.getElementById("result_page");
 let startButton = document.getElementById("start-button");
 let shareButton = document.getElementById("share");
-let num = 1;
 const q = {
     1: {
         q: "연말 파티에 초대 받은 당신!<br>꽤 많은 사람이 모여 있을 거라고 하는데",
@@ -262,10 +261,29 @@ function copyURI(evt) {
     );
 }
 
+function startQuiz() {
+    let count = 1;
+
+    let EI = 0;
+    let SN = 0;
+    let TF = 0;
+    let JP = 0;
+
+    question = document.getElementById("question")
+    buttonA= document.getElementById("A");
+    buttonB= document.getElementById("B");
+
+    while (count <= 12) {
+        question.textContent = q[count]["q"]
+        buttonA.textContent = q[count]["A"]
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
         startButton.addEventListener("click", function () {
             window.location.href = 'quiz.html';
+            startQuiz();
         });
         shareButton.addEventListener("click", copyURI);
     }

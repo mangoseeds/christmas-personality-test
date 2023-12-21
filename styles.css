@@ -52,11 +52,12 @@ body {
   margin: 0 30px;
   position: relative;
 }
-.navbar ul li a {
+.navbar ul li {
   text-decoration: none;
   color: #bd1111;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 }
 .navbar ul li::after {
   content: "";

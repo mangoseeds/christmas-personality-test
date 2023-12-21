@@ -1,4 +1,4 @@
-<html>
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="나의 크리스마스 유형을 알아보세요." />
@@ -12,9 +12,9 @@
   </head>
   <body>
     <!-- START PAGE -->
-    <article id="start_page">
+    <div id="start_page">
       <div class="navbar">
-         <img src="home.png" class="home">
+         <img id="logo" src="./img/home.png" alt="home">
         <ul>
           <li><a href="www.testurl">공유하기</a></li>
         </ul>
@@ -27,52 +27,51 @@
           type="button"
           class="button"
           onclick="start();"
-          style="width: inherit; color: #bd1111; border: 3px solid #bd1111"
         >
           시작하기
         </button>
       </div>
-    </article>
+    </div>
 
-    <!-- QUIZ PAGE -->
-    <article id="quiz_page">
-      <div>
-        <h1 id="question" style="padding: 100px">문제</h1>
-      </div>
-      <div id="button_container">
-        <input id="type" type="hidden" value="EI" />
-        <button id="A" type="button" class="button" onclick="Aclick();">
-          선택1</button
-        ><button id="B" type="button" class="button" onclick="Bclick();">
-          선택2
-        </button>
-      </div>
-    </article>
+<!--    &lt;!&ndash; QUIZ PAGE &ndash;&gt;-->
+<!--    <article id="quiz_page">-->
+<!--      <div>-->
+<!--        <h1 id="question" style="padding: 100px">문제</h1>-->
+<!--      </div>-->
+<!--      <div id="button_container">-->
+<!--        <input id="type" type="hidden" value="EI" />-->
+<!--        <button id="A" type="button" class="button" onclick="Aclick();">-->
+<!--          선택1</button-->
+<!--        ><button id="B" type="button" class="button" onclick="Bclick();">-->
+<!--          선택2-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </article>-->
 
-    <!-- RESULT PAGE -->
-    <article id="result_page">
-      <div class="banner">
-        <div class="navbar">
-          <img src="home.png" class="logo" />
-          <ul>
-            <!-- <li><a href="image file" download>저장하기</a></li> -->
-            <li><a href="www.testurl" onclick="copyURI(event)">공유하기</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="content">
-        <h1 id="result"></h1>
-        <!-- <img src="result.png" class="result"> -->
-        <p id="explain"></p>
-        <p id="quote"></p>
-        <p id="gift"></p>
-      </div>
-    </article>
+<!--    &lt;!&ndash; RESULT PAGE &ndash;&gt;-->
+<!--    <article id="result_page">-->
+<!--      <div class="banner">-->
+<!--        <div class="navbar">-->
+<!--          <img src="home.png" class="logo" />-->
+<!--          <ul>-->
+<!--            &lt;!&ndash; <li><a href="image file" download>저장하기</a></li> &ndash;&gt;-->
+<!--            <li><a href="www.testurl" onclick="copyURI(event)">공유하기</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="content">-->
+<!--        <h1 id="result"></h1>-->
+<!--        &lt;!&ndash; <img src="result.png" class="result"> &ndash;&gt;-->
+<!--        <p id="explain"></p>-->
+<!--        <p id="quote"></p>-->
+<!--        <p id="gift"></p>-->
+<!--      </div>-->
+<!--    </article>-->
 
-    <input type="hidden" id="EI" value="0" />
-    <input type="hidden" id="SN" value="0" />
-    <input type="hidden" id="TF" value="0" />
-    <input type="hidden" id="JP" value="0" />
+<!--    <input type="hidden" id="EI" value="0" />-->
+<!--    <input type="hidden" id="SN" value="0" />-->
+<!--    <input type="hidden" id="TF" value="0" />-->
+<!--    <input type="hidden" id="JP" value="0" />-->
 
   </body>
   <script src="./script.js"></script>

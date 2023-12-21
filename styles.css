@@ -4,40 +4,45 @@
   font-family: sans-serif;
 }
 
+body {
+  width: 100%;
+  height: 100%;
+}
+
 #start_page {
   width: 100%;
   height: 100%;
   background-color: #185033;
 }
 
-#quiz_page {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: #bd1111;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
+/*#quiz_page {*/
+/*  visibility: hidden;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background-color: #bd1111;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: stretch;*/
+/*}*/
 
-#result_page {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: #185033;
-}
+/*#result_page {*/
+/*  visibility: hidden;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background-color: #185033;*/
+/*}*/
 
 .navbar {
-  width: 100%;
-  height: 20%;
+  /*width: 100%;*/
+  height: 80px;
   padding: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
-  width: 120px;
+#logo {
+  height: 110px;
   cursor: pointer;
 }
 
@@ -69,14 +74,14 @@
 
 .content {
   width: 100%;
-  height:100%;
+  /*height: 80%;*/
   text-align: center;
   color: #bd1111;
 }
 
 .content h1 {
   font-size: 60px;
-  margin: 40px;
+  margin: 80px;
   text-align: center;
 }
 
@@ -93,9 +98,21 @@
   height: 100%;
 }
 
+#start-button {
+  height: 45%;
+  width: 100%;
+  color: #bd1111;
+  border: 3px solid #bd1111;
+  background-color: #185033;
+}
+#start-button:hover {
+  background-color: #bd1111;
+  color: #185033;
+}
+
 button {
   width: 50%;
-  height: 100%;
+  height: 40%;
   padding: 20px;
   text-align: center;
   margin: 0;

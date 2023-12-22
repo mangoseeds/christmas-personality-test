@@ -7,29 +7,21 @@
             content="크리스마스, 크리스마스 테스트, 성격 테스트, mbti, 크리스마스 mbti, mbti 크리스마스, 크리스마스 성격 테스트"
     />
     <meta title="크리스마스 유형 테스트" />
+    <title>크리스마스 유형 테스트</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div id="quiz_page">
-    <div>
-        <h2 id="question" style="padding: 100px">문제</h2>
+    <div id="quiz_page">
+        <div class="top">
+            <h2 id="question">문제</h2>
+        </div>
+        <div id="button_container">
+            <button id="buttonA" type="button" class="button" onclick="nextQuestion('A');">
+                <h3>선택1</h3></button
+            ><button id="buttonB" type="button" class="button" onclick="nextQuestion('B');">
+            <h3>선택2</h3></button>
+        </div>
     </div>
-    <div id="button_container">
-        <input id="type" type="hidden" value="EI" />
-        <button id="A" type="button" class="button" onclick="Aclick();">
-            <h3>선택1</h3></button
-        ><button id="B" type="button" class="button" onclick="Bclick();">
-        <h3>선택2</h3>
-    </button>
-    </div>
-</div>
-
-
-<!--<input type="hidden" id="EI" value="0" />-->
-<!--<input type="hidden" id="SN" value="0" />-->
-<!--<input type="hidden" id="TF" value="0" />-->
-<!--<input type="hidden" id="JP" value="0" />-->
-
 </body>
 <script src="./script.js"></script>
 </html>

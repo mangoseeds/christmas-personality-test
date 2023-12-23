@@ -1,105 +1,6 @@
-const q = {
-    1: {
-        q: "연말 파티에 초대 받은 당신!<br>꽤 많은 사람이 모여 있을 거라고 하는데",
-        type: "EI",
-        A: "파티 좋지<br>오랜만에 못보던 얼굴들도 보고",
-        B: "귀찮아<br>그냥 집에서 재밌는 영화나 볼래",
-        c1: "#ac2c44",
-        c2: "#60a72c",
-    },
-    2: {
-        q: "친구가 작년에 준 크리스마스 선물<br>일년동안 한번도 사용한 적이 없는데",
-        type: "TF",
-        A: "더 잘 활용할 사람에게 주자",
-        B: "선물이니까 일단은 가지고 있을래",
-        c1: "#77241e",
-        c2: "#1ca252",
-    },
-    3: {
-        q: "드레스코드가 정해진<br>크리스마스 파티에 나는",
-        type: "EI",
-        A: "화려한 옷을 고른다",
-        B: "무난한 옷을 고른다",
-        c1: "#3c9560",
-        c2: "#913c46",
-    },
-    4: {
-        q: "만약 내일 아침에 일어났을 때<br>내가 크리스마스 트리로 변해있으면?",
-        type: "SN",
-        A: "그건 불가능해",
-        B: "이런 저런 상상이 펼쳐진다",
-        c1: "#6a1c0f",
-        c2: "#c83735",
-    },
-    5: {
-        q: "우리 내일 만나자! 라고 물어보는 친구<br>하지만 내일은 날씨가 안좋다",
-        type: "EI",
-        A: "크게 상관 없지",
-        B: "내일 말고 다른 날 어때?",
-        c1: "#7e8b44",
-        c2: "#7f2910",
-    },
-    6: {
-        q: "친구에게 크리스마스 선물을 주었을 때<br>더 듣기 좋은 말은",
-        type: "TF",
-        A: "내가 갖고 싶다고 얘기했던거네!<br>어떻게 기억력이 이렇게 좋아?",
-        B: "내가 딱 원했던건데,<br>역시 넌 섬세해",
-        c1: "#66bc4d",
-        c2: "#f93e3e",
-    },
-    7: {
-        q: "바로 내일이 크리스마스 파티!<br>잠들기 전에",
-        type: "SN",
-        A: "별 생각 없이<br>잠든다",
-        B: "내일 무슨 일이 있을지<br>상상을 하며 잠든다",
-        c1: "#185033",
-        c2: "#ca484a",
-    },
-    8: {
-        q: "연말 파티에 친구와 나는 케이크 담당을 맡았다!<br>어디서 살지 심사숙고하여 고르는데",
-        type: "SN",
-        A: "대충 검색해보면<br>바로 느낌이 온다",
-        B: "꼼꼼히 후기를<br>읽어보고 고른다",
-        c1: "#729579",
-        c2: "#407020",
-    },
-    9: {
-        q: "친구와 함께 케이크를 사러 가기로 했는데<br> 약속 시간에 30분이나 늦을 것 같은데",
-        type: "TF",
-        A: "미안 30분정도 늦을 것 같아<br>연말이라 그런지 차가 많이 막히네",
-        B: "좀 많이 늦을 것 같아<br>추운데 기다리게 해서 미안",
-        c1: "#b81a1a",
-        c2: "#7cb851",
-    },
-    10: {
-        q: "내 지각으로 원래 가려고 했던 케이크 가게의<br> 영업 시간이 끝났을 때",
-        type: "JP",
-        A: "이미 새로운 케이크 가게를 찾았고<br>친구를 만나서 바로 출발한다",
-        B: "친구랑 함께 검색하여<br>새로 갈 곳을 고른다",
-        c1: "#92b74a",
-        c2: "#b9313e",
-    },
-    11: {
-        q: "계획이 흐트러진 것에 대해",
-        type: "JP",
-        A: "조금은 스트레스를 받는다",
-        B: "스트레스 없이 넘길 수 있다",
-        c1: "#af383c",
-        c2: "#26cc68",
-    },
-    12: {
-        q: "곧 시작되는 2023년, 나는",
-        type: "JP",
-        A: "내년을 위한 상세한 계획을 세워뒀다",
-        B: "이루고 싶은 목표 정도는 생각해 봤다",
-        c1: "#67B346",
-        c2: "#BB3A33",
-    },
-    13: { c1: "#0d642f", c2: "#ab2323" },
-};
 const r = {
     ISTJ: {
-        img: "img_istj.jpg",
+        img: "candy.png",
         result: "시원한 페퍼민트 사탕",
         extra: "",
         gift: "차 세트",
@@ -108,7 +9,7 @@ const r = {
     },
 
     ISFJ: {
-        img: "img_isfj.jpg",
+        img: "snowman.png",
         result: "맑은 눈사람",
         extra: "",
         gift: "달력",
@@ -117,7 +18,7 @@ const r = {
     },
 
     INTJ: {
-        img: "img_intj.jpg",
+        img: "stockings.png",
         result: "선물이 가득 담긴 양말 주머니",
         extra: "",
         gift: "나무 체스보드",
@@ -126,7 +27,7 @@ const r = {
     },
 
     INFJ: {
-        img: "img_infj.jpg",
+        img: "rudolph.png",
         result: "미스테리 루돌프",
         extra: "",
         gift: "책",
@@ -135,7 +36,7 @@ const r = {
     },
 
     ISTP: {
-        img: "img_istp.jpg",
+        img: "candle.png",
         result: "따뜻하고 향기로운 캔들",
         extra: "",
         gift: "폴라로이드",
@@ -144,7 +45,7 @@ const r = {
     },
 
     ISFP: {
-        img: "img_isfp.jpg",
+        img: "movie.png",
         result: "크리스마스 영화",
         extra: "",
         gift: "파자마",
@@ -153,7 +54,7 @@ const r = {
     },
 
     INTP: {
-        img: "img_intp.jpg",
+        img: "fireplace.png",
         result: "따뜻한 온기를 주는 벽난로",
         extra: "",
         gift: "목도리",
@@ -162,7 +63,7 @@ const r = {
     },
 
     INFP: {
-        img: "img_infp.jpg",
+        img: "gift.png",
         result: "포장지 속의 선물",
         extra: "",
         gift: "손편지",
@@ -171,7 +72,7 @@ const r = {
     },
 
     ESTJ: {
-        img: "img_estj.jpg",
+        img: "snowflake.png",
         result: "새하얀 눈송이",
         extra: "",
         gift: "딸기 케이크",
@@ -180,7 +81,7 @@ const r = {
     },
 
     ESFJ: {
-        img: "img_esfj.jpg",
+        img: "lease.png",
         result: "화사한 크리스마스 리스",
         extra: "",
         gift: "공연 티켓",
@@ -189,8 +90,8 @@ const r = {
     },
 
     ENTJ: {
-        img: "img_entj.jpg",
-        result: "스노우맨 오르골",
+        img: "globe.png",
+        result: "스노우맨 스노우글로브",
         extra: "",
         gift: "알람 시계",
         explain:
@@ -198,8 +99,8 @@ const r = {
     },
 
     ENFJ: {
-        img: "img_enfj.jpg",
-        result: "캐롤 음악",
+        img: "jazz.png",
+        result: "배경을 채우는 묵직한 재즈 음악",
         extra: "",
         gift: "꽃",
         explain:
@@ -207,8 +108,8 @@ const r = {
     },
 
     ESTP: {
-        img: "img_estp.jpg",
-        result: "진저브레트 쿠키",
+        img: "nutcracker.png",
+        result: "백조 사이의 넛크래커",
         extra: "",
         gift: "딸기 타르트",
         explain:
@@ -216,7 +117,7 @@ const r = {
     },
 
     ESFP: {
-        img: "img_esfp.jpg",
+        img: "star.png",
         result: "반짝반짝 트리 위의 별",
         extra: "",
         gift: "장갑",
@@ -225,8 +126,8 @@ const r = {
     },
 
     ENTP: {
-        img: "img_entp.jpg",
-        result: "배경을 채우는 묵직한 재즈 음악",
+        img: "gingerbread.png",
+        result: "앙증맞은 진저브레드 쿠키",
         extra: "",
         gift: "목도리",
         explain:
@@ -234,7 +135,7 @@ const r = {
     },
 
     ENFP: {
-        img: "img_enfp.jpg",
+        img: "sangria.png",
         result: "분위기를 띄우는 샹그리아",
         extra: "",
         gift: "무드등",
@@ -242,3 +143,46 @@ const r = {
             "사람을 기쁘게 해주는 능력이 있어요. 고민도 잘 들어줘요.<br>분위기를 잘 띄운 후에 나는 뒤로 빠져요.<br>외향적인 사람보다는 내향적인 사람들 사이에서 모임을 잘 주도해요.<br>선생님이 마음에 들면 하기 싫은 과목도 잘해요.<br>인생을 즐겁게 살려고 노력해요.<br>반복적이고 변화가 없는 일상은 답답하고 지루해요.<br>계획하기 보다는 그때 그때 일을 처리해요.",
     },
 };
+
+const passedResult = sessionStorage.getItem('mbtiResult');
+// const mbti = r[passedResult]
+const mbti = r["ISTJ"];
+
+let result;
+let resultImg;
+let explain;
+let gift;
+let shareButton = document.getElementById("share");
+
+function copyURI(evt) {
+    evt.preventDefault();
+    navigator.clipboard.writeText(evt.target.getAttribute("href")).then(
+        () => {
+            /*clipboard successfully set */
+            alert("링크가 클립보드에 복사되었습니다.")
+        },
+        () => {
+            /*clipboard set failed */
+        }
+    );
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    shareButton.addEventListener("click", copyURI);
+    result = document.getElementById("result");
+    resultImg = document.getElementById("result-image");
+    explain = document.getElementById("explain");
+    gift = document.getElementById("gift");
+
+    document.body.style.backgroundColor = "#185033";
+
+
+    console.log(passedResult);
+    console.log(mbti);
+    result.textContent = mbti.result;
+    resultImg.src = "./img/" + mbti.img;
+    explain.textContent = mbti.explain;
+    gift.textContent = "선물 추천: " + mbti.gift;
+
+});

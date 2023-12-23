@@ -2,7 +2,7 @@ const q = {
     1: {
         q: "연말 파티에 초대 받은 당신!\n꽤 많은 사람이 모여 있을 거라고 하는데",
         type: "EI",
-        A: "오랜만에 못보던 얼굴들도 보고 파티 좋지!",
+        A: "오랜만에 못보던 친구들 다 보고 파티 좋지!",
         B: "귀찮은데.. 그냥 집에서 재밌는 영화나 볼래",
         c1: "#ac2c44",
         c2: "#60a72c",
@@ -10,7 +10,7 @@ const q = {
     2: {
         q: "일년동안 한번도 사용한 적이 없는 친구의 작년 크리스마스 선물을",
         type: "TF",
-        A: "못쓰니 아깝네, 더 잘 활용할 친구한테 줘야겠다",
+        A: "못쓰니 아깝네, 더 잘 활용할 친구한테 줘야겠다!",
         B: "선물이니까 일단은 간직하고 있을래! 추억이 있지",
         c1: "#77241e",
         c2: "#1ca252",
@@ -26,7 +26,7 @@ const q = {
     4: {
         q: "만약 내일 아침에 일어났을 때 내가 크리스마스 트리로 변해있으면?",
         type: "SN",
-        A: "크리스마스 트리는 무생물인데.. 내가 그럴리가",
+        A: "크리스마스 트리...? 대체 내가 그럴리가",
         B: "으악 다른 사람이 나를 알아볼 수 있을까?",
         c1: "#6a1c0f",
         c2: "#c83735",
@@ -34,15 +34,15 @@ const q = {
     5: {
         q: "내일 하루종일 비가 온다는걸 확인했는데, 친구가 내일 점심을 같이 먹자고 물어본다",
         type: "EI",
-        A: "비가 와도 친구 보는거 크게 상관 없지",
-        B: "내일 계속 비온다는데 내일 모레 어때?",
+        A: "비가 와도 친구 보는거 뭐 크게 상관 없지",
+        B: "내일 계속 비 온대ㅜㅜ 혹시 다른날 어때?",
         c1: "#7e8b44",
         c2: "#7f2910",
     },
     6: {
         q: "친구에게 크리스마스 선물을 주었을 때 더 듣기 좋은 말은",
         type: "TF",
-        A: "내가 갖고 싶다고 얘기했던거네! 어떻게 그걸 기억했어?",
+        A: "헉 내가 갖고 싶다고 얘기했던거! 어떻게 그걸 기억했어?",
         B: "내가 딱 원했던건데, 역시 넌 섬세하구나 어떻게 알았어!",
         c1: "#66bc4d",
         c2: "#f93e3e",
@@ -66,8 +66,8 @@ const q = {
     9: {
         q: "케이크를 사기 위해 친구랑 만나기로 했지만 연말이라 차가 막혀 약속 시간에 30분이나 늦을 것 같은데,",
         type: "TF",
-        A: "친구야ㅜㅜ 미안 30분정도 늦을 것 같아 연말이라 그런지 차가 많이 막히네",
-        B: "친구야ㅜㅜ 미안 30분정도 늦을 것 같아 추운데 기다리게 해서 미안해",
+        A: "친구야ㅜㅜ 미안 30분정도 늦을 것 같아 연말이라 그런지 차가 많이 막힌다",
+        B: "친구야ㅜㅜ  30분 뒤에야 도착할 것 같네ㅜㅜ 추운데 기다리게 해서 미안해",
         c1: "#b81a1a",
         c2: "#7cb851",
     },
@@ -75,7 +75,7 @@ const q = {
         q: "내 지각으로 원래 가려고 했던 케이크 가게의 영업 시간이 끝났을 때",
         type: "JP",
         A: "이미 마감 시간을 알고 있어서 가는 길에 새로운 케이크 가게를 찾아뒀지~",
-        B: "으앗! 여기 주변에 괜찮은 곳 어디 있지? 친구랑 함께 다시 찾아본다",
+        B: "조금 당황스럽지만 바로 친구랑 다시 의논하며 함께 새로운 가게를 찾아본다",
         c1: "#92b74a",
         c2: "#b9313e",
     },
@@ -109,6 +109,9 @@ let buttonA;
 let buttonB;
 let docBody;
 
+let c1;
+let c2;
+
 document.addEventListener("DOMContentLoaded", function () {
     quizPage = document.getElementById("quiz_page");
     question = document.getElementById("question");
@@ -123,8 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function showQuestion() {
     console.log(q[count]);
 
-    let c1 = q[count].c1;
-    let c2 = q[count].c2;
+    c1 = q[count].c1;
+    c2 = q[count].c2;
     console.log(c1, c2);
 
     question.textContent = q[count].q;
@@ -135,8 +138,10 @@ function showQuestion() {
     docBody.style.backgroundColor = c1;
     question.style.color = c2;
     buttonA.style.color = c2;
+    buttonA.style.backgroundColor = c1;
     buttonA.style.border = "3px solid " + c2;
     buttonB.style.color = c2;
+    buttonB.style.backgroundColor = c1;
     buttonB.style.border = "3px solid " + c2;
 
 
@@ -163,10 +168,10 @@ function mbtiResult() {
     let mbti = "";
     console.log(EI, SN, TF, JP);
 
-    mbti += EIValue < 2 ? "I" : "E";
-    mbti += SNValue < 2 ? "N" : "S";
-    mbti += TFValue < 2 ? "F" : "T";
-    mbti += JPValue < 2 ? "P" : "J";
+    mbti += EI < 2 ? "I" : "E";
+    mbti += SN < 2 ? "N" : "S";
+    mbti += TF < 2 ? "F" : "T";
+    mbti += JP < 2 ? "P" : "J";
 
     sessionStorage.setItem('mbtiResult', mbti);
     window.location.href = 'result.html';
@@ -176,6 +181,11 @@ function mbtiResult() {
 function nextQuestion(ans) {
 
     if (ans === 'A') {
+        buttonA.style.backgroundColor = c2;
+        buttonA.style.color = c1;
+        quizPage.style.color = c2;
+        setTimeout(() => {}, 500); // 500 milliseconds (0.5 seconds)
+
         let questionType = q[count]["type"];
         switch (questionType) {
             case "EI":
@@ -191,26 +201,14 @@ function nextQuestion(ans) {
                 JP++;
                 break;
         }
+    } else if (ans === 'B') {
+
+        buttonB.style.backgroundColor = c2;
+        buttonB.style.color = c1;
+        quizPage.style.color = c2;
+        setTimeout(() => {
+        }, 500); // 500 milliseconds (0.5 seconds)
     }
-    // } else if (ans === 'B') {
-    //     let questionType = q[count]["type"];
-    //     switch (questionType) {
-    //         case "EI":
-    //             EI--;
-    //             break;
-    //         case "SN":
-    //             SN--;
-    //             break
-    //         case "TF":
-    //             TF--;
-    //             break;
-    //         case "JP":
-    //             JP--;
-    //             break;
-    //     }
-    // } else {
-    //     console.log("error: fetching type and calculating")
-    // }
 
     count++;
 

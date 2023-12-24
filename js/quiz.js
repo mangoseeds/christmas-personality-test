@@ -207,7 +207,7 @@ function nextQuestion(ans) {
         buttonB.style.color = c1;
         quizPage.style.color = c2;
         setTimeout(() => {
-        }, 500); // 500 milliseconds (0.5 seconds)
+        }, 800); // 500 milliseconds (0.5 seconds)
     }
 
     count++;

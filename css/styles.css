@@ -197,3 +197,39 @@ button {
   text-align: center;
 
 }
+
+
+@media screen and (max-width: 600px) {
+  .navbar ul li {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #quiz_page h2 {
+    font-size: 20px;
+  }
+
+  #quiz_page h3 {
+    font-size: 16px;
+  }
+
+  button,
+  #start-button {
+    font-size: 18px;
+  }
+
+  #question {
+    font-size: 20px;
+  }
+
+  #result {
+    font-size: 20px;
+  }
+
+  .result-area p {
+    font-size: 14px;
+  }
+}

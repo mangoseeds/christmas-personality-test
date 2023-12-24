@@ -201,35 +201,35 @@ button {
 
 @media screen and (max-width: 600px) {
   .navbar ul li {
-    font-size: 16px;
-  }
-
-  h1 {
     font-size: 24px;
   }
 
+  h1 {
+    font-size: 36px;
+  }
+
   #quiz_page h2 {
-    font-size: 20px;
+    font-size: 28px;
   }
 
   #quiz_page h3 {
-    font-size: 16px;
+    font-size: 28px;
   }
 
   button,
   #start-button {
-    font-size: 18px;
+    font-size: 28px;
   }
 
   #question {
-    font-size: 20px;
+    font-size: 32px;
   }
 
   #result {
-    font-size: 20px;
+    font-size: 36px;
   }
 
   .result-area p {
-    font-size: 14px;
+    font-size: 28px;
   }
 }

@@ -146,7 +146,7 @@ const r = {
 
 const passedResult = sessionStorage.getItem('mbtiResult');
 const mbti = r[passedResult]
-// const mbti = r["ISTJ"];
+const link = "https://christmastest.netlify.app"
 
 let result;
 let resultImg;
@@ -156,7 +156,7 @@ let shareButton = document.getElementById("share");
 
 function copyURI(evt) {
     evt.preventDefault();
-    navigator.clipboard.writeText(evt.target.getAttribute("href")).then(
+    navigator.clipboard.writeText(evt.target.getAttribute(link)).then(
         () => {
             /*clipboard successfully set */
             alert("링크가 클립보드에 복사되었습니다.")

@@ -1,9 +1,10 @@
 let startButton = document.getElementById("start-button");
 let shareButton = document.getElementById("share");
+const link = "https://christmastest.netlify.app"
 
 function copyURI(evt) {
     evt.preventDefault();
-    navigator.clipboard.writeText(evt.target.getAttribute("href")).then(
+    navigator.clipboard.writeText(evt.target.getAttribute(link)).then(
         () => {
             /*clipboard successfully set */
             alert("링크가 클립보드에 복사되었습니다.")

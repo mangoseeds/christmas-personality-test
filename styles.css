@@ -19,7 +19,7 @@ body {
 #quiz_page {
   width: 100%;
   height: 100%;
-  background-color: #bd1111;
+  background-color: #ee1e1e;
   display: flex;
   flex-direction: column;
   transition: background-color 0.5s ease;
@@ -58,7 +58,7 @@ body {
 }
 .navbar ul li {
   text-decoration: none;
-  color: #e55255;
+  color: #ee1e1e;
   font-weight: bold;
   font-size: 20px;
   cursor: pointer;
@@ -67,7 +67,7 @@ body {
   content: "";
   height: 3px;
   width: 0%;
-  background: #e55255;
+  background: #ee1e1e;
   position: absolute;
   left: 0;
   bottom: -10px;
@@ -87,7 +87,7 @@ h1 {
   font-size: 42px;
   padding: 30px;
   text-align: center;
-  color: #e55255;
+  color: #ee1e1e;
 }
 
 #quiz_page h2 {
@@ -127,12 +127,12 @@ h1 {
   font-size: 25px;
   height: 100%;
   width: 100%;
-  color: #e55255;
-  border: 3px solid #e55255;
+  color: #ee1e1e;
+  border: 3px solid #ee1e1e;
   background-color: #185033;
 }
 #start-button:hover {
-  background-color: #e55255;
+  background-color: #ee1e1e;
   color: #185033;
 }
 
@@ -151,29 +151,32 @@ button {
 
 #result_page {
   background-color: #185033;
-  color: #e55255;
+  color: #ee1e1e;
   display: flex;
   flex-direction: column;
 }
 
 #result_page .navbar ul li {
-  color: #e55255;
+  color: #ee1e1e;
 }
 
 #result {
   font-size: 24px;
   font-weight: bold;
-  color: #e55255;
+  color: #ee1e1e;
 }
 
 .result-top {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 #result-image {
-  height: 200px;
+  height: 170px;
+  width: 320px;
 
 }
 
@@ -185,6 +188,11 @@ button {
 
 .result-area p {
   font-size: 16px;
-  font-weight: bold;
-  color: #e55255;
+  color: #ff2b2b;
+  padding: 5px;
+}
+
+#gift {
+  text-align: center;
+
 }

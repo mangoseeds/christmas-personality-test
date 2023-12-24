@@ -180,9 +180,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log(passedResult);
     console.log(mbti);
+
     result.textContent = mbti.result;
     resultImg.src = "./img/" + mbti.img;
-    explain.textContent = mbti.explain;
+
+    exp = mbti.explain.split("<br>");
+    console.log(exp);
+
+    for (let i = 0; i < exp.length; i++) {
+        const newParagraph = document.createElement("p");
+
+        newParagraph.textContent = exp[i];
+
+        explain.appendChild(newParagraph);
+    }
+
+    // explain.textContent = mbti.explain.split("<br>") ;
     gift.textContent = "선물 추천: " + mbti.gift;
 
 });

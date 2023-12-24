@@ -1,6 +1,6 @@
 let startButton = document.getElementById("start-button");
 let shareButton = document.getElementById("share");
-const link = "https://christmastest.netlify.app"
+const deploylink = "https://christmastest.netlify.app"
 
 function copyURI(evt) {
     evt.preventDefault();

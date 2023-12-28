@@ -27,11 +27,8 @@ Show the result to the user with an image and description of their type
 
 ## Try The Test
 
-To take the Christmas MBTI test and get your personality type:
+https://christmastest.netlify.app 
 
-Clone this repo
-Open index.html in your browser
-Answer the 12 questions by clicking on the button
-See your result
+Answer the 12 questions by clicking on the button, and see your result
 
-Let me know if you have any feedback or suggestions for improvements to this festive web app! I'm still learning web development and hope to build bigger projects from these foundational skills.
+Let me know if you have any feedback or suggestions for improvements to this web app! I'm still learning web development and hope to build bigger projects from these foundational skills.
